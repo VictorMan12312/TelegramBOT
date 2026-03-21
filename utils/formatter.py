@@ -9,7 +9,7 @@ def format_reminders_list(reminders: List[Reminder]) -> str:
     lines = ["*Tus Recordatorios:*", ""]
     for r in reminders:
         estado = "[Completado]" if r.status == 'done' else "[Pendiente]"
-        lines.append(f"{estado} *ID:* {r.id} - {r.title}")
+        lines.append(f"{estado} *ID:* {r.position} - {r.title}")
         if r.due_date:
             lines.append(f"   Vence: {r.due_date.strftime('%Y-%m-%d %H:%M')}")
     

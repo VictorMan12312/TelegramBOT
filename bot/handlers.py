@@ -37,7 +37,6 @@ async def list_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     if success:
         response = format_reminders_list(result)
-        # Renderizar respuesta usando formato Markdown
         await update.message.reply_markdown(response)
     else:
         await update.message.reply_text(result)

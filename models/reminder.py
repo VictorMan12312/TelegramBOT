@@ -11,5 +11,6 @@ class Reminder:
     user_id: int
     title: str
     status: str
+    position: Optional[int] = None
     created_at: Optional[datetime] = None
     due_date: Optional[datetime] = None
