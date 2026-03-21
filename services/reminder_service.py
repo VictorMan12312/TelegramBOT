@@ -1,6 +1,7 @@
 from typing import List, Tuple
 from db import queries
 from models.reminder import Reminder
+from nlp.parser import parse_natural_language
 
 class ReminderService:
     @staticmethod
@@ -8,12 +9,13 @@ class ReminderService:
         if not text:
             return "El texto del recordatorio no puede estar vacío."
         
-        due_date = None
+        parsed = parse_natural_language(text)
+        due_date = parsed["datetime"]
         
         reminder = Reminder(
             id=None,
             user_id=user_id,
-            title=text.strip(),
+            title=parsed["title"],
             status='pending',
             due_date=due_date
         )

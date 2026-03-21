@@ -17,7 +17,7 @@ def init_db():
             title TEXT NOT NULL,
             status VARCHAR(20) DEFAULT 'pending',
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            due_date TIMESTAMP NULL
+            due_date DATETIME NULL
         )
     """)
     conn.commit()
