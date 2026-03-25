@@ -2,8 +2,11 @@ import re
 from datetime import datetime, timedelta
 
 def parse_natural_language(text):
+    """
+    Procesa un texto en lenguaje natural para extraer marcas temporales como 
+    'mañana', 'en X horas' o 'HH:MM'. Retorna el texto limpio y el objeto datetime.
+    """
     text = text.lower()
-
     now = datetime.now()
 
     if "mañana" in text:

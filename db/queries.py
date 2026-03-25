@@ -6,7 +6,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 def init_db():
-    """Inicializa la base de datos creando la tabla necesaria."""
+    """Inicializa la base de datos creando la tabla de recordatorios si no existe."""
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute("""
@@ -25,7 +25,10 @@ def init_db():
     conn.close()
 
 def create_reminder(reminder: Reminder) -> int:
-    """Inserta un nuevo recordatorio en la base de datos."""
+    """
+    Inserta un nuevo recordatorio en la base de datos incrementando la posición.
+    Retorna la posición generada, la cual actúa como ID relativo para el usuario.
+    """
     conn = get_db_connection()
     cursor = conn.cursor()
     
@@ -39,14 +42,14 @@ def create_reminder(reminder: Reminder) -> int:
     """
     cursor.execute(query, (reminder.user_id, new_position, reminder.title, reminder.status, reminder.due_date))
     conn.commit()
-    # Retornamos la posicion como ID para el usuario
+    
     inserted_id = new_position 
     cursor.close()
     conn.close()
     return inserted_id
 
 def get_reminders_by_user(user_id: int) -> List[Reminder]:
-    """Obtiene todos los recordatorios para un usuario específico."""
+    """Obtiene todos los recordatorios para un usuario ordenados por posición."""
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
     query = "SELECT * FROM reminders WHERE user_id = %s ORDER BY position ASC, created_at DESC"
@@ -58,7 +61,7 @@ def get_reminders_by_user(user_id: int) -> List[Reminder]:
     return [Reminder(**row) for row in rows]
 
 def get_reminder_by_id_and_user(reminder_id: int, user_id: int) -> Optional[Reminder]:
-    """Obtiene un recordatorio específico por ID (position) y el ID del usuario."""
+    """Obtiene un recordatorio específico utilizando su posición (ID) y el ID del usuario."""
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
     query = "SELECT * FROM reminders WHERE position = %s AND user_id = %s"
@@ -72,7 +75,7 @@ def get_reminder_by_id_and_user(reminder_id: int, user_id: int) -> Optional[Remi
     return None
 
 def update_reminder_title(position: int, user_id: int, new_title: str) -> bool:
-    """Actualiza el título del recordatorio objetivo."""
+    """Actualiza solo el texto/título del recordatorio a partir de su posición."""
     conn = get_db_connection()
     cursor = conn.cursor()
     query = "UPDATE reminders SET title = %s WHERE position = %s AND user_id = %s"
@@ -84,7 +87,10 @@ def update_reminder_title(position: int, user_id: int, new_title: str) -> bool:
     return affected > 0
 
 def update_reminder_status(position: int, user_id: int, status: str) -> bool:
-    """Actualiza el estado del recordatorio objetivo."""
+    """
+    Actualiza el estado de un recordatorio (ej. 'done').
+    Si es completado, reasigna su posición a 0 y reindexa los posteriores.
+    """
     conn = get_db_connection()
     cursor = conn.cursor()
     query = "UPDATE reminders SET status = %s WHERE position = %s AND user_id = %s"
@@ -103,7 +109,7 @@ def update_reminder_status(position: int, user_id: int, status: str) -> bool:
     return affected > 0
 
 def delete_reminder(position: int, user_id: int) -> bool:
-    """Elimina el recordatorio dado."""
+    """Elimina permanentemente un recordatorio y reindexa la posición de los restantes."""
     conn = get_db_connection()
     cursor = conn.cursor()
     query = "DELETE FROM reminders WHERE position = %s AND user_id = %s"
