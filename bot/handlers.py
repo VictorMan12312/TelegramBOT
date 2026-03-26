@@ -3,6 +3,8 @@ from telegram import Update
 from telegram.ext import ContextTypes
 from services.reminder_service import ReminderService
 from utils.formatter import format_reminders_list
+from ML.intent_model import predict_intent
+
 
 logger = logging.getLogger(__name__)
 
@@ -92,3 +94,29 @@ class BotHandlers:
         reminder_id = args[0]
         response = self.service.delete_reminder(user_id, reminder_id)
         await update.message.reply_text(response)
+
+    async def message_handler(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        text = update.message.text
+        if not text:
+            return
+            
+        intent = predict_intent(text)
+        if intent == "add":
+            user_id = update.effective_user.id
+            chat_id = update.effective_chat.id
+            result = self.service.add_reminder(user_id, chat_id, text)
+            if result["success"]:
+                await update.message.reply_text("Recordatorio programado")
+            else:
+                await update.message.reply_text(result["error"])
+        elif intent == "list":
+            await self.list_command(update, context)
+        elif intent == "delete":
+            await update.message.reply_text("Para eliminar usa el comando: /delete <id>")
+        elif intent == "done":
+            await update.message.reply_text("Para completar usa el comando: /done <id>")
+        elif intent == "update":
+            await update.message.reply_text("Para actualizar usa el comando: /update <id> <nuevo texto>")
+        else:
+            await update.message.reply_text("No entendí tu mensaje, intenta de nuevo")
+    

@@ -1,0 +1,202 @@
+[
+    {
+        "text": "anótame comprar pan para las 7pm",
+        "label": "add"
+    },
+    {
+        "text": "recuérdame que tengo cita con el médico el lunes",
+        "label": "add"
+    },
+    {
+        "text": "pon una nota: entregar el reporte mañana",
+        "label": "add"
+    },
+    {
+        "text": "agéndame una reunión de trabajo",
+        "label": "add"
+    },
+    {
+        "text": "no olvides avisarme de la lavandería",
+        "label": "add"
+    },
+    {
+        "text": "anótame comprar pan para las 7pm",
+        "label": "add"
+    },
+    {
+        "text": "recuérdame que tengo cita con el médico el lunes",
+        "label": "add"
+    },
+    {
+        "text": "pon una nota: entregar el reporte mañana",
+        "label": "add"
+    },
+    {
+        "text": "agéndame una reunión de trabajo",
+        "label": "add"
+    },
+    {
+        "text": "no olvides avisarme de la lavandería",
+        "label": "add"
+    },
+    {
+        "text": "¿qué planes tengo para el fin de semana?",
+        "label": "list"
+    },
+    {
+        "text": "dime qué cosas tengo por hacer",
+        "label": "list"
+    },
+    {
+        "text": "muéstrame mi agenda de hoy",
+        "label": "list"
+    },
+    {
+        "text": "enséñame los recordatorios pendientes",
+        "label": "list"
+    },
+    {
+        "text": "lista de tareas para el martes",
+        "label": "list"
+    },
+    {
+        "text": "¿qué planes tengo para el fin de semana?",
+        "label": "list"
+    },
+    {
+        "text": "dime qué cosas tengo por hacer",
+        "label": "list"
+    },
+    {
+        "text": "muéstrame mi agenda de hoy",
+        "label": "list"
+    },
+    {
+        "text": "enséñame los recordatorios pendientes",
+        "label": "list"
+    },
+    {
+        "text": "lista de tareas para el martes",
+        "label": "list"
+    },
+    {
+        "text": "quita la tarea de ir al gym",
+        "label": "delete"
+    },
+    {
+        "text": "olvida lo de comprar flores",
+        "label": "delete"
+    },
+    {
+        "text": "remueve el recordatorio de las 5",
+        "label": "delete"
+    },
+    {
+        "text": "cancela la tarea número 4",
+        "label": "delete"
+    },
+    {
+        "text": "ya no quiero que me avises de la junta",
+        "label": "delete"
+    },
+    {
+        "text": "quita la tarea de ir al gym",
+        "label": "delete"
+    },
+    {
+        "text": "olvida lo de comprar flores",
+        "label": "delete"
+    },
+    {
+        "text": "remueve el recordatorio de las 5",
+        "label": "delete"
+    },
+    {
+        "text": "cancela la tarea número 4",
+        "label": "delete"
+    },
+    {
+        "text": "ya no quiero que me avises de la junta",
+        "label": "delete"
+    },
+    {
+        "text": "pásame la tarea de las 3 para las 5",
+        "label": "update"
+    },
+    {
+        "text": "edita el recordatorio de pasear al perro",
+        "label": "update"
+    },
+    {
+        "text": "pospón la tarea de estudiar para mañana",
+        "label": "update"
+    },
+    {
+        "text": "cambia el título de la tarea 2 por 'Cena familiar'",
+        "label": "update"
+    },
+    {
+        "text": "reprograma mi recordatorio de lectura",
+        "label": "update"
+    },
+    {
+        "text": "pásame la tarea de las 3 para las 5",
+        "label": "update"
+    },
+    {
+        "text": "edita el recordatorio de pasear al perro",
+        "label": "update"
+    },
+    {
+        "text": "pospón la tarea de estudiar para mañana",
+        "label": "update"
+    },
+    {
+        "text": "cambia el título de la tarea 2 por 'Cena familiar'",
+        "label": "update"
+    },
+    {
+        "text": "reprograma mi recordatorio de lectura",
+        "label": "update"
+    },
+    {
+        "text": "listo el mandado",
+        "label": "done"
+    },
+    {
+        "text": "marca como terminada la tarea de inglés",
+        "label": "done"
+    },
+    {
+        "text": "ya quedó lo de la limpieza",
+        "label": "done"
+    },
+    {
+        "text": "check a la tarea de enviar correos",
+        "label": "done"
+    },
+    {
+        "text": "finalicé el proyecto de IA",
+        "label": "done"
+    },
+    {
+        "text": "listo el mandado",
+        "label": "done"
+    },
+    {
+        "text": "marca como terminada la tarea de inglés",
+        "label": "done"
+    },
+    {
+        "text": "ya quedó lo de la limpieza",
+        "label": "done"
+    },
+    {
+        "text": "check a la tarea de enviar correos",
+        "label": "done"
+    },
+    {
+        "text": "finalicé el proyecto de IA",
+        "label": "done"
+    }
+]

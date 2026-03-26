@@ -3,6 +3,7 @@ import logging
 import sys
 from telegram.ext import ApplicationBuilder, CommandHandler
 from dotenv import load_dotenv
+from telegram.ext import MessageHandler, filters
 
 load_dotenv()
 
@@ -45,6 +46,8 @@ def main() -> None:
     application.add_handler(CommandHandler("update", handlers.update_command))
     application.add_handler(CommandHandler("done", handlers.done_command))
     application.add_handler(CommandHandler("delete", handlers.delete_command))
+
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handlers.message_handler))
 
     logger.info("Iniciando el bot en modo polling...")
     application.run_polling()
