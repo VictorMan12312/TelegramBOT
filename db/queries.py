@@ -1,5 +1,5 @@
 from typing import List, Optional
-from db.connection import get_db_connection
+from db.pool import get_db_connection
 from models.reminder import Reminder
 import logging
 
